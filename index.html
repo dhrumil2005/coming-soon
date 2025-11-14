@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The House Of Gifting</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+
+  <!-- Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay">
+    <div class="launch-container">
+      <h1>🎁 House of Gifting</h1>
+      <p class="subtitle">We’re launching something beautiful soon ✨</p>
+
+      <div class="countdown" id="countdown">
+        <div><span id="days">00</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+      </div>
+
+      <form class="subscribe">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <p class="footer">© 2025 House of Gifting. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script>
+    const launchDate = new Date("Dec 25, 2025 00:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    const x = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      if (distance < 0) {
+        clearInterval(x);
+        countdown.innerHTML = "<p>We’re Live Now 🎉</p>";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
